@@ -1,0 +1,17 @@
+#version any
+struct of_flat_header : of_experimenter {
+    uint8_t version;
+    uint8_t type == 4;
+    uint16_t length;
+    uint32_t xid;
+    uint32_t experimenter == 0x1000;
+    uint32_t subtype == 0;
+};
+Struct of_action_flat : of_action_experimenter {
+    uint16_t type == 65535;
+    uint16_t len;
+    uint32_t experimenter == 0x1000;
+    uint16_t subtype == 1;
+    uint16_t timeflake;
+    of_port_no_t port;
+};
